@@ -9,45 +9,42 @@ export const Footer = () => {
           <div className="col-span-1 md:col-span-1 flex flex-col items-center md:items-start text-left">
             <Link to="/" className="font-display text-2xl font-bold tracking-tighter text-white block mb-6">INFIWIN</Link>
             <p className="text-white/40 text-sm font-light leading-relaxed max-w-xs">
-              Crafting transparency since 2008. The global benchmark for high-performance glass systems and architectural enclosures.
+              Premium architectural glass and slide & turn frameless balcony structures designed for Indian climatic conditions.
             </p>
           </div>
-          
+
           <div className="text-left">
-            <h5 className="text-[10px] uppercase tracking-[0.3em] text-white font-bold mb-8">Products</h5>
+            <h5 className="text-[10px] uppercase tracking-[0.3em] text-white font-bold mb-8">6 Product Lines</h5>
             <ul className="space-y-4 text-white/60 text-sm">
-              <li><Link to="/products" className="hover:text-white transition-colors">Balcony Enclosure</Link></li>
-              <li><Link to="/products" className="hover:text-white transition-colors">Partition Systems</Link></li>
-              <li><Link to="/products" className="hover:text-white transition-colors">Sliding Doors</Link></li>
-              <li><Link to="/products" className="hover:text-white transition-colors">Structural Glass</Link></li>
+              <li><Link to="/products#folding" className="hover:text-white transition-colors">Slide & Turn System</Link></li>
+              <li><Link to="/products#sliding" className="hover:text-white transition-colors">Telescopic Slider</Link></li>
+              <li><Link to="/products#centre-open" className="hover:text-white transition-colors">Centre Open System</Link></li>
+              <li><Link to="/products#bifold" className="hover:text-white transition-colors">Bi-fold Enclosures</Link></li>
+              <li><Link to="/products#sliding-2track" className="hover:text-white transition-colors">2 Track Slider</Link></li>
+              <li><Link to="/products#sliding-3track" className="hover:text-white transition-colors">3 Track Slider</Link></li>
             </ul>
           </div>
-          
+
           <div className="text-left">
-            <h5 className="text-[10px] uppercase tracking-[0.3em] text-white font-bold mb-8">Company</h5>
+            <h5 className="text-[10px] uppercase tracking-[0.3em] text-white font-bold mb-8">Space Usages</h5>
             <ul className="space-y-4 text-white/60 text-sm">
-              <li><Link to="/about" className="hover:text-white transition-colors">Our Story</Link></li>
-              <li><Link to="/about" className="hover:text-white transition-colors">Sustainability</Link></li>
-              <li><Link to="/faq" className="hover:text-white transition-colors">FAQ</Link></li>
-              <li><Link to="/about" className="hover:text-white transition-colors">Careers</Link></li>
-              <li><Link to="/contact" className="hover:text-white transition-colors">Find a Dealer</Link></li>
+              <li><Link to="/applications#balcony" className="hover:text-white transition-colors">Balcony Glass</Link></li>
+              <li><Link to="/applications#office" className="hover:text-white transition-colors">Office Glass Partitions</Link></li>
+              <li><Link to="/applications#commercial" className="hover:text-white transition-colors">Commercial Facades</Link></li>
+              <li><Link to="/applications#terrace" className="hover:text-white transition-colors">Terrace & Gardens</Link></li>
             </ul>
           </div>
-          
+
           <div className="text-left">
-            <h5 className="text-[10px] uppercase tracking-[0.3em] text-white font-bold mb-8">Newsletter</h5>
-            <p className="text-white/40 text-xs mb-6 font-light">Join for architectural inspiration.</p>
-            <div className="flex">
-              <input 
-                type="email" 
-                placeholder="Email address" 
-                className="bg-white/5 border border-white/20 px-4 py-3 text-xs outline-none focus:border-luxury-gold w-full text-white"
-              />
-              <button className="bg-white px-4 text-black"><ArrowRight size={16} /></button>
-            </div>
+            <h5 className="text-[10px] uppercase tracking-[0.3em] text-white font-bold mb-8">Contact Info</h5>
+            <ul className="space-y-4 text-white/60 text-sm font-light">
+              <li>Corporate Office: <br />H 195, Sector 63, Noida, UP - 201309</li>
+              <li><a href="mailto:hi@infiwindow.com" className="hover:text-white transition-colors">hi@infiwindow.com</a></li>
+              <li><a href="tel:+917337074370" className="hover:text-white transition-colors">+91 73370 74370</a></li>
+            </ul>
           </div>
         </div>
-        
+
         <div className="flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-10 text-[10px] uppercase tracking-widest text-white/30 font-medium">
           <p>© 2026 INFIWIN SYSTEMS. PRECISION CRAFTED ENCLOSURES.</p>
           <div className="flex gap-8 mt-4 md:mt-0">

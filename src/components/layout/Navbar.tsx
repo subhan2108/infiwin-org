@@ -20,9 +20,9 @@ export const Navbar = () => {
     { name: "Home", href: "/" },
     { name: "Products", href: "/products" },
     { name: "Applications", href: "/applications" },
-    { name: "About", href: "/about" },
-    { name: "FAQ", href: "/faq" },
-    { name: "Contact", href: "/contact" },
+    { name: "Concepts", href: "/concepts" },
+    { name: "About Us", href: "/about" },
+    { name: "Contact Us", href: "/contact" },
   ];
 
   // For homepage, we might want transparent at top. For others, maybe always glass.
@@ -34,47 +34,52 @@ export const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${navBackground}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-sm">
-        <Link to="/" className="flex items-center gap-2">
-          <span className={`font-display text-2xl font-bold tracking-tighter transition-colors ${logoColor}`}>INFIWIN</span>
-        </Link>
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center text-sm relative">
+        <div className="flex-1">
+          <Link to="/" className="flex items-center gap-2 inline-flex">
+            <span className={`font-display text-2xl font-bold tracking-tighter transition-colors ${logoColor}`}>INFIWIN</span>
+          </Link>
+        </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 font-medium">
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 font-medium">
           {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              to={link.href} 
-              className={`transition-colors uppercase tracking-widest text-[11px] ${textColor}`}
+            <Link
+              key={link.name}
+              to={link.href}
+              className={`transition-colors uppercase tracking-[0.2em] text-[10px] ${textColor}`}
             >
               {link.name}
             </Link>
           ))}
-          <button className={`px-5 py-2 rounded-full uppercase tracking-tighter text-[11px] font-bold transition-all ${buttonClass}`}>
-            Get a Quote
-          </button>
         </div>
 
-        {/* Mobile Toggle */}
-        <button 
-          className={`md:hidden ${logoColor}`}
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex-1 flex justify-end items-center gap-4">
+          <button className={`hidden md:block px-8 py-3 rounded-sm uppercase tracking-[0.2em] text-[10px] transition-all ${buttonClass}`}>
+            Get a Quote
+          </button>
+          
+          {/* Mobile Toggle */}
+          <button
+            className={`md:hidden ${logoColor}`}
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="md:hidden absolute top-full left-0 w-full bg-white border-t border-slate-100 p-6 flex flex-col gap-4 shadow-xl"
         >
           {navLinks.map((link) => (
-            <Link 
-              key={link.name} 
-              to={link.href} 
+            <Link
+              key={link.name}
+              to={link.href}
               className="text-slate-600 font-medium uppercase tracking-widest text-xs"
               onClick={() => setIsMobileMenuOpen(false)}
             >

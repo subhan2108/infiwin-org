@@ -11,7 +11,7 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Applications from "./pages/Applications";
 import About from "./pages/About";
-import FAQ from "./pages/FAQ";
+import Concepts from "./pages/Concepts";
 import Contact from "./pages/Contact";
 
 // Scroll to top on route change
@@ -49,7 +49,7 @@ export default function App() {
             <Route path="/products" element={<Products />} />
             <Route path="/applications" element={<Applications />} />
             <Route path="/about" element={<About />} />
-            <Route path="/faq" element={<FAQ />} />
+            <Route path="/concepts" element={<Concepts />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>

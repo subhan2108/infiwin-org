@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { 
   ArrowRight, 
@@ -10,14 +11,25 @@ import {
 } from "lucide-react";
 
 export default function Products() {
+  const [activeFilter, setActiveFilter] = useState("All");
+
   const products = [
-    { title: "Infi SET Slide & Turn", img: "https://images.unsplash.com/photo-1600607687940-4e7a6a4d872c?auto=format&fit=crop&q=80&w=800" },
-    { title: "Telescopic Slider", img: "https://images.unsplash.com/photo-1512918766775-d56aebb25bd1?auto=format&fit=crop&q=80&w=800" },
-    { title: "Centre Open System", img: "https://images.unsplash.com/photo-1628744448840-55bdb2497bd4?auto=format&fit=crop&q=80&w=800" },
-    { title: "Bi-fold System", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=800" },
-    { title: "2 Track Slider", img: "https://images.unsplash.com/photo-1449844908441-8829872d2607?auto=format&fit=crop&q=80&w=800" },
-    { title: "3 Track Slider", img: "https://images.unsplash.com/photo-1583333222241-11910cf9ca0a?auto=format&fit=crop&q=80&w=800" }
+    { title: "Guillotine Glass System", category: "Balcony System", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2002_50_39%20PM.png" },
+    { title: "Telescopic Sliders", category: "Internal Partition", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2012_15_29%20PM.png" },
+    { title: "Synchronized Systems", category: "Internal Partition", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2002_29_01%20PM.png" },
+    { title: "Top Hang Bi Fold", category: "Internal Partition", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2012_27_22%20PM.png" },
+    { title: "Sliding Windows & Doors", category: "Doors & Windows", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2003_25_52%20PM.png" },
+    { title: "Openable Windows & Doors", category: "Doors & Windows", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2002_30_38%20PM.png" },
+    { title: "Foldable Doors (Bi Fold)", category: "Doors & Windows", img: "/foldable_doors.png" },
+    { title: "90 Degree Encloser", category: "Bathroom", img: "/ninety_degree.png" },
+    { title: "Sliding Enclouser", category: "Bathroom", img: "/sliding_enclosure.png" },
+    { title: "Openable Door", category: "Bathroom", img: "/openable_door.png" },
+    { title: "Fixed Partition", category: "Bathroom", img: "/fixed_partition.png" },
+    { title: "Slide & Turn", category: "Balcony System", img: "/slide_turn.png" }
   ];
+
+  const categories = ["All", "Balcony System", "Internal Partition", "Doors & Windows", "Bathroom"];
+  const filteredProducts = activeFilter === "All" ? products : products.filter(p => p.category === activeFilter);
 
   return (
     <div className="pt-24 min-h-screen bg-white">
@@ -42,28 +54,49 @@ export default function Products() {
       {/* Signature Range */}
       <section className="px-6 py-24">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-16">
-            <h3 className="text-sm font-medium text-slate-400 uppercase tracking-[0.3em] mb-4">Signature Range</h3>
-            <h4 className="text-4xl font-serif italic text-slate-900">Highly Engineered Systems</h4>
+          <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div>
+              <h3 className="text-sm font-medium text-slate-400 uppercase tracking-[0.3em] mb-4">Signature Range</h3>
+              <h4 className="text-4xl font-serif italic text-slate-900">Highly Engineered Systems</h4>
+            </div>
+
+            <div className="flex flex-wrap gap-4 items-center">
+              {categories.map((cat, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveFilter(cat)}
+                  className={`px-6 py-2 rounded-sm text-sm tracking-wide transition-all duration-300 ${
+                    activeFilter === cat
+                      ? "bg-luxury-gold text-white font-medium shadow-md"
+                      : "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {products.map((p, idx) => (
+            {filteredProducts.map((p, idx) => (
               <motion.div 
-                key={idx}
+                key={`${p.title}-${idx}`}
                 initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ delay: idx * 0.1, duration: 0.4 }}
                 className="group cursor-pointer"
               >
-                <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6 shadow-md transition-shadow hover:shadow-xl">
+                <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6 shadow-md transition-shadow hover:shadow-xl relative">
                   <img 
                     src={p.img} 
                     alt={p.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
+                  <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-sm text-white text-[10px] uppercase tracking-widest px-3 py-1 rounded-sm">
+                    {p.category}
+                  </div>
                 </div>
                 <div className="flex justify-between items-center">
                   <h5 className="text-2xl font-serif italic group-hover:text-luxury-gold transition-colors">{p.title}</h5>
