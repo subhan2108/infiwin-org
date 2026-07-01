@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { motion } from "motion/react";
-import { 
-  ArrowRight, 
-  ChevronRight, 
-  Layers, 
-  Settings, 
-  ShieldCheck, 
+import {
+  ArrowRight,
+  ChevronRight,
+  Layers,
+  Settings,
+  ShieldCheck,
   Activity,
   Maximize2
 } from "lucide-react";
@@ -65,11 +65,10 @@ export default function Products() {
                 <button
                   key={idx}
                   onClick={() => setActiveFilter(cat)}
-                  className={`px-6 py-2 rounded-sm text-sm tracking-wide transition-all duration-300 ${
-                    activeFilter === cat
+                  className={`px-6 py-2 rounded-sm text-sm tracking-wide transition-all duration-300 ${activeFilter === cat
                       ? "bg-luxury-gold text-white font-medium shadow-md"
                       : "bg-slate-100 text-slate-500 hover:bg-slate-200"
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
@@ -79,7 +78,7 @@ export default function Products() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {filteredProducts.map((p, idx) => (
-              <motion.div 
+              <motion.div
                 key={`${p.title}-${idx}`}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -88,9 +87,9 @@ export default function Products() {
                 className="group cursor-pointer"
               >
                 <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6 shadow-md transition-shadow hover:shadow-xl relative">
-                  <img 
-                    src={p.img} 
-                    alt={p.title} 
+                  <img
+                    src={p.img}
+                    alt={p.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     referrerPolicy="no-referrer"
                   />
@@ -115,7 +114,7 @@ export default function Products() {
             <div>
               <h3 className="text-sm font-medium text-white/40 uppercase tracking-[0.3em] mb-4">Configurations & Variants</h3>
               <h4 className="text-5xl font-serif mb-12 italic">Structural <span className="not-italic">Integration</span></h4>
-              
+
               <div className="space-y-12">
                 <div className="flex gap-6">
                   <div className="mt-1 text-luxury-gold"><Maximize2 size={24} /></div>
@@ -126,7 +125,7 @@ export default function Products() {
                     </p>
                   </div>
                 </div>
-                
+
                 <div className="flex gap-6">
                   <div className="mt-1 text-luxury-gold"><Layers size={24} /></div>
                   <div>
@@ -135,34 +134,34 @@ export default function Products() {
                       Specialized solutions for windows and balcony partitions where structural height is divided.
                     </p>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                       <div className="p-6 bg-white/5 border border-white/10 rounded-sm">
-                          <p className="text-[10px] uppercase font-bold text-luxury-gold mb-2">Windows</p>
-                          <p className="text-sm font-light text-white/70 italic">Railing to Ceiling</p>
-                       </div>
-                       <div className="p-6 bg-white/5 border border-white/10 rounded-sm">
-                          <p className="text-[10px] uppercase font-bold text-luxury-gold mb-2">Popular</p>
-                          <p className="text-sm font-light text-white/70 italic">Glass Railing + Self Top Rail</p>
-                       </div>
+                      <div className="p-6 bg-white/5 border border-white/10 rounded-sm">
+                        <p className="text-[10px] uppercase font-bold text-luxury-gold mb-2">Windows</p>
+                        <p className="text-sm font-light text-white/70 italic">Railing to Ceiling</p>
+                      </div>
+                      <div className="p-6 bg-white/5 border border-white/10 rounded-sm">
+                        <p className="text-[10px] uppercase font-bold text-luxury-gold mb-2">Popular</p>
+                        <p className="text-sm font-light text-white/70 italic">Glass Railing + Self Top Rail</p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+
             <div className="relative">
-               <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-2xl">
-                  <img 
-                    src="https://images.unsplash.com/photo-1518005020251-58296d195a62?auto=format&fit=crop&q=80&w=800" 
-                    alt="Configuration Example" 
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
-               </div>
-               {/* Floating stat */}
-               <div className="absolute -bottom-10 -left-10 glass-morphism p-8 rounded-sm text-black">
-                  <p className="text-4xl font-serif italic mb-1">3200mm</p>
-                  <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Single Pane Reach</p>
-               </div>
+              <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-2xl">
+                <img
+                  src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?auto=format&fit=crop&q=80&w=800"
+                  alt="Configuration Example"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              {/* Floating stat */}
+              <div className="absolute -bottom-10 -left-10 glass-morphism p-8 rounded-sm text-black">
+                <p className="text-4xl font-serif italic mb-1">3200mm</p>
+                <p className="text-[10px] uppercase tracking-widest font-bold text-slate-500">Single Pane Reach</p>
+              </div>
             </div>
           </div>
         </div>
@@ -190,26 +189,26 @@ export default function Products() {
               </div>
             ))}
           </div>
-          
+
           <div className="mt-20 flex flex-wrap justify-center gap-10 opacity-50 grayscale hover:grayscale-0 transition-all">
-             <div className="flex items-center gap-2"><ShieldCheck size={24} /> <span className="text-xs font-bold uppercase tracking-widest">RC2 Security Certified</span></div>
-             <div className="flex items-center gap-2"><Activity size={24} /> <span className="text-xs font-bold uppercase tracking-widest">600 Pa Watertight Rated</span></div>
-             <div className="flex items-center gap-2"><Settings size={24} /> <span className="text-xs font-bold uppercase tracking-widest">Architectural Grade</span></div>
+            <div className="flex items-center gap-2"><ShieldCheck size={24} /> <span className="text-xs font-bold uppercase tracking-widest">RC2 Security Certified</span></div>
+            <div className="flex items-center gap-2"><Activity size={24} /> <span className="text-xs font-bold uppercase tracking-widest">600 Pa Watertight Rated</span></div>
+            <div className="flex items-center gap-2"><Settings size={24} /> <span className="text-xs font-bold uppercase tracking-widest">Architectural Grade</span></div>
           </div>
         </div>
       </section>
 
       {/* Call to Action */}
       <section className="px-6 py-20 bg-luxury-gold/5 border-y border-luxury-gold/10">
-         <div className="max-w-4xl mx-auto text-center">
-            <h4 className="text-3xl font-serif italic mb-8">Ready to upgrade your space?</h4>
-            <p className="text-slate-600 font-light mb-10 leading-relaxed">
-               Our consultants are ready to provide a detailed technical assessment and quote for your project.
-            </p>
-            <button className="bg-black text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-slate-800 transition-colors">
-               Request a Technical Quote
-            </button>
-         </div>
+        <div className="max-w-4xl mx-auto text-center">
+          <h4 className="text-3xl font-serif italic mb-8">Ready to upgrade your space?</h4>
+          <p className="text-slate-600 font-light mb-10 leading-relaxed">
+            Our consultants are ready to provide a detailed technical assessment and quote for your project.
+          </p>
+          <button className="bg-black text-white px-10 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-slate-800 transition-colors">
+            Request a Technical Quote
+          </button>
+        </div>
       </section>
     </div>
   );

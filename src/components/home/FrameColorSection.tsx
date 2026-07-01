@@ -3,10 +3,10 @@ import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 
 const frameColors = [
-  { id: "white", name: "Arctic White", hex: "#f1f1f1", desc: "A timeless, clean finish that brightens any balcony. Arctic White pairs effortlessly with modern minimalist interiors and light-toned exteriors." },
-  { id: "rose", name: "Rose Bronze", hex: "#cfa89f", desc: "A warm, sophisticated tone that adds a touch of subtle luxury and contemporary elegance to your living space." },
-  { id: "gold", name: "Champagne Gold", hex: "#cfb57a", desc: "A premium brushed finish that exudes opulence. Perfect for high-end architectural integrations." },
-  { id: "dark", name: "Charcoal Grey", hex: "#5a5a5a", desc: "A bold, industrial look that provides striking contrast and matches perfectly with modern concrete or dark-wood aesthetics." }
+  { id: "white", name: "Arctic White", hex: "#f1f1f1", img: "https://i.postimg.cc/QMxh5fFS/Chat-GPT-Image-Jun-16-2026-05-44-44-PM-removebg-preview.png", desc: "A timeless, clean finish that brightens any balcony. Arctic White pairs effortlessly with modern minimalist interiors and light-toned exteriors." },
+  { id: "rose", name: "Rose Bronze", hex: "#cfa89f", img: "https://i.postimg.cc/tJRMvcjg/Chat-GPT-Image-Jun-17-2026-11-41-14-AM-(3).png", desc: "A warm, sophisticated tone that adds a touch of subtle luxury and contemporary elegance to your living space." },
+  { id: "gold", name: "Champagne Gold", hex: "#cfb57a", img: "https://i.postimg.cc/QtC76gz8/Chat-GPT-Image-Jun-17-2026-11-41-14-AM-(2).pnghttps://i.postimg.cc/QMxh5fFS/Chat-GPT-Image-Jun-16-2026-05-44-44-PM-removebg-preview.png", desc: "A premium brushed finish that exudes opulence. Perfect for high-end architectural integrations." },
+  { id: "dark", name: "Charcoal Grey", hex: "#5a5a5a", img: "https://i.postimg.cc/15wvcP6g/Chat-GPT-Image-Jun-17-2026-11-41-13-AM-(1).png", desc: "A bold, industrial look that provides striking contrast and matches perfectly with modern concrete or dark-wood aesthetics." }
 ];
 
 const badges = [
@@ -23,9 +23,9 @@ export const FrameColorSection = () => {
     <section className="py-32 bg-white px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
+
           {/* Left Side - Content */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -37,9 +37,9 @@ export const FrameColorSection = () => {
                 Slide & Turn System - Available Frame Finishes
               </span>
             </div>
-            
+
             <h2 className="text-5xl md:text-6xl font-serif text-slate-900 mb-6 font-light">Choose Your Frame Colour</h2>
-            
+
             <p className="text-slate-500 font-light text-[15px] leading-loose mb-10">
               Our signature Slide & Turn system glides on ultra-smooth tracks, allowing individual sheets of toughened glass to fully stack to either corner — offering 100% opening potential. Now available in four premium powder-coated aluminium finishes.
             </p>
@@ -55,7 +55,7 @@ export const FrameColorSection = () => {
 
             <div className="mb-10">
               <p className="text-[10px] uppercase tracking-[0.3em] text-slate-400 mb-6">Select Colour</p>
-              
+
               <div className="flex gap-4 mb-6">
                 {frameColors.map((color) => (
                   <button
@@ -69,7 +69,7 @@ export const FrameColorSection = () => {
               </div>
 
               <div className="bg-[#fafafa] p-8 rounded-sm border border-black/5 shadow-none min-h-[120px]">
-                <motion.div 
+                <motion.div
                   key={selectedColor.id}
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -97,21 +97,25 @@ export const FrameColorSection = () => {
           </motion.div>
 
           {/* Right Side - Image Gallery */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="flex flex-col items-center"
           >
-            <div className="w-full relative bg-[#fafafa] rounded-sm p-12 mb-6 border border-black/5">
-              <img 
-                src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80" 
-                alt="Frame Showcase" 
-                className="w-full h-auto object-cover rounded-sm shadow-none mix-blend-multiply border border-black/5"
+            <div className="w-full relative bg-[#fafafa] rounded-sm p-12 mb-6 border border-black/5 min-h-[400px] flex items-center justify-center">
+              <motion.img
+                key={selectedColor.id}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4 }}
+                src={selectedColor.img}
+                alt={`${selectedColor.name} Frame`}
+                className="w-full h-auto object-cover rounded-sm shadow-none mix-blend-multiply border border-black/5 absolute inset-4 max-w-[calc(100%-2rem)] max-h-[calc(100%-2rem)]"
                 referrerPolicy="no-referrer"
               />
             </div>
-            
+
             {/* Dots */}
             <div className="flex gap-2">
               <div className="w-6 h-2 rounded-full bg-slate-300"></div>

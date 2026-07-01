@@ -18,7 +18,7 @@ const FAQAccordian = ({ item }: { item: FAQItem; key?: any }) => {
 
   return (
     <div className="border-b border-slate-100 last:border-0 group">
-      <button 
+      <button
         className="w-full py-6 flex justify-between items-center text-left transition-all"
         onClick={() => setIsOpen(!isOpen)}
       >
@@ -116,8 +116,8 @@ export default function FAQ() {
 
   const filteredSections = sections.map(section => ({
     ...section,
-    items: section.items.filter(item => 
-      item.question.toLowerCase().includes(searchQuery.toLowerCase()) || 
+    items: section.items.filter(item =>
+      item.question.toLowerCase().includes(searchQuery.toLowerCase()) ||
       item.answer.toLowerCase().includes(searchQuery.toLowerCase())
     )
   })).filter(section => section.items.length > 0);
@@ -136,13 +136,13 @@ export default function FAQ() {
             <p className="text-slate-500 font-light text-lg mb-12">
               Explore our comprehensive guide to architectural glass systems, structural integrity, and premium installation standards.
             </p>
-            
+
             {/* Search Bar */}
             <div className="relative max-w-lg mx-auto">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
-              <input 
-                type="text" 
-                placeholder="Search technical topics..." 
+              <input
+                type="text"
+                placeholder="Search technical topics..."
                 className="w-full pl-12 pr-4 py-4 rounded-full border border-slate-200 outline-none focus:border-luxury-gold transition-colors text-sm font-light"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -160,8 +160,8 @@ export default function FAQ() {
               {filteredSections.map((section, idx) => (
                 <div key={idx} id={section.title.toLowerCase().replace(/\s+/g, '-')}>
                   <div className="flex items-center gap-3 mb-8">
-                     <span className="text-2xl">{section.icon}</span>
-                     <h3 className="text-2xl font-serif italic text-slate-900 border-b border-luxury-gold/20 pb-2 flex-grow">{section.title}</h3>
+                    <span className="text-2xl">{section.icon}</span>
+                    <h3 className="text-2xl font-serif italic text-slate-900 border-b border-luxury-gold/20 pb-2 flex-grow">{section.title}</h3>
                   </div>
                   <div className="space-y-2">
                     {section.items.map((item, i) => (
@@ -173,7 +173,7 @@ export default function FAQ() {
             </div>
           ) : (
             <div className="text-center py-20">
-               <p className="text-slate-400 font-serif italic text-2xl">No topics matching your search.</p>
+              <p className="text-slate-400 font-serif italic text-2xl">No topics matching your search.</p>
             </div>
           )}
         </div>
@@ -181,23 +181,23 @@ export default function FAQ() {
 
       {/* Support CTA */}
       <section className="px-6 py-20 bg-slate-900 text-white rounded-t-[3rem] mt-20">
-         <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
-            <div className="w-16 h-16 rounded-full bg-luxury-gold flex items-center justify-center mb-8">
-               <MessageSquare className="text-white" size={32} />
-            </div>
-            <h4 className="text-3xl font-serif italic mb-6">Still have questions?</h4>
-            <p className="text-white/50 font-light mb-10 leading-relaxed">
-               Our architectural consultants are available for complex technical queries and structural assessments.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-               <button className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-luxury-gold hover:text-white transition-all flex items-center gap-2">
-                  Technical Support <ChevronRight size={16} />
-               </button>
-               <button className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-colors">
-                  Contact Sales
-               </button>
-            </div>
-         </div>
+        <div className="max-w-4xl mx-auto flex flex-col items-center text-center">
+          <div className="w-16 h-16 rounded-full bg-luxury-gold flex items-center justify-center mb-8">
+            <MessageSquare className="text-white" size={32} />
+          </div>
+          <h4 className="text-3xl font-serif italic mb-6">Still have questions?</h4>
+          <p className="text-white/50 font-light mb-10 leading-relaxed">
+            Our architectural consultants are available for complex technical queries and structural assessments.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button className="bg-white text-black px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-luxury-gold hover:text-white transition-all flex items-center gap-2">
+              Technical Support <ChevronRight size={16} />
+            </button>
+            <button className="border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white/10 transition-colors">
+              Contact Sales
+            </button>
+          </div>
+        </div>
       </section>
     </div>
   );

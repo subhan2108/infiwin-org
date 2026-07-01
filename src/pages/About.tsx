@@ -1,235 +1,237 @@
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { useRef } from "react";
 import { 
-  History, 
-  Settings, 
-  Truck, 
-  Lightbulb, 
   ShieldCheck, 
-  Leaf,
-  Linkedin,
-  Twitter,
-  ArrowRight
+  CheckCircle2,
+  Eye
 } from "lucide-react";
 
 export default function About() {
   const milestones = [
-    { year: "1984", title: "The First Atelier", desc: "A small glass workshop in Germany focused on artisanal restorations." },
-    { year: "1998", title: "Architectural Breakthrough", desc: "First major commercial project in Berlin, setting new standards for facades." },
-    { year: "2010", title: "Global Expansion", desc: "Opening nodes in Singapore and Chicago to serve the international market." },
-    { year: "2018", title: "Sustainable Innovation", desc: "Launching solar-integrated glass line to meet modern energy demands." },
-    { year: "2024", title: "Precision Redefined", desc: "Introduction of the 20mm interlock, the slimmest in the industry." }
+    { year: "2010", num: "10", title: "The Beginning", desc: "Founded with a vision to revolutionize the glass facade industry with premium solutions." },
+    { year: "2015", num: "15", title: "Pioneering Tech", desc: "Introduced our signature slide & fold system that disrupted the domestic market." },
+    { year: "2018", num: "18", title: "Commercial Expansion", desc: "Expanded our portfolio to serve large scale commercial projects and office spaces." },
+    { year: "2023", num: "23", title: "Global Standards", desc: "Reached milestone of delivering projects across 15+ states with global quality standards." }
   ];
 
-  const process = [
-    { 
-      title: "Precision Engineering", 
-      icon: <Settings size={32} />, 
-      desc: "Every project starts with a rigorous technical analysis. We utilize advanced parametric modeling to ensure structural integrity and thermal efficiency." 
-    },
-    { 
-      title: "Custom Fabrication", 
-      icon: <History size={32} />, 
-      desc: "In our climate-controlled facility, we transform raw materials into precision-cut components using automated water-jet and CNC technologies." 
-    },
-    { 
-      title: "White-Glove Installation", 
-      icon: <Truck size={32} />, 
-      desc: "Our specialized teams handle the final assembly with surgical precision, ensuring seamless transitions and flawless finishes on site." 
-    }
-  ];
-
-  const team = [
-    { name: "Marcus Vance", role: "Founder & CEO", img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=400" },
-    { name: "Elena Rossi", role: "Director of Design", img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=400" },
-    { name: "Simon Chen", role: "Chief Engineer", img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&q=80&w=400" },
-    { name: "Sarah Miller", role: "Sustainability Lead", img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=400" }
-  ];
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: timelineRef,
+    offset: ["start center", "end center"]
+  });
 
   return (
-    <div className="pt-24 min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="px-6 py-24 bg-slate-50 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <h1 className="text-sm font-medium text-slate-400 uppercase tracking-[0.3em] mb-4">Precision in Every Pane</h1>
-            <h2 className="text-6xl md:text-8xl font-serif text-slate-900 leading-tight italic mb-8">Crafting <br /> <span className="not-italic">Clarity</span></h2>
-            <p className="max-w-2xl text-slate-500 font-light text-lg leading-relaxed mb-10">
-              Redefining boundaries through the medium of light, clarity, and structural innovation. From our roots as a German atelier to a global architectural benchmark.
+      <section className="relative w-full flex flex-col lg:flex-row pt-24 min-h-screen lg:min-h-0 lg:h-[700px]">
+        {/* Left Side - Image */}
+        <div className="w-full lg:w-1/2 h-[400px] lg:h-full relative">
+          <img 
+            src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80" 
+            alt="About Infiwin" 
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+        
+        {/* Right Side - Content */}
+        <div className="w-full lg:w-1/2 flex items-center justify-center bg-slate-900 p-12 lg:p-24">
+          <div className="text-left max-w-xl">
+            <p className="text-[10px] text-luxury-gold uppercase tracking-[0.3em] mb-4">Our Heritage</p>
+            <h1 className="text-5xl md:text-7xl font-serif italic text-white mb-6">ABOUT INFIWIN</h1>
+            <p className="text-lg md:text-xl font-light text-slate-300 leading-relaxed">
+              Crafting Premium Frameless Glass Solutions Aligned with Global Standards of Architectural Excellence
             </p>
-          </motion.div>
+          </div>
         </div>
-        {/* Decorative elements */}
-        <div className="absolute top-1/2 left-0 w-64 h-[1px] bg-slate-200"></div>
-        <div className="absolute top-1/2 right-0 w-64 h-[1px] bg-slate-200"></div>
       </section>
 
-      {/* Story Section */}
-      <section className="px-6 py-24">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+      {/* Beyond Boundaries Section */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="flex flex-col"
           >
-            <h3 className="text-sm font-medium text-slate-400 uppercase tracking-[0.3em] mb-6">Our Legacy</h3>
-            <h4 className="text-4xl font-serif italic text-slate-900 mb-8 max-w-md">From a Boutique Atelier to an Industry Standard</h4>
-            <div className="space-y-6 text-slate-500 font-light leading-relaxed">
+            <p className="text-[10px] text-luxury-gold uppercase tracking-[0.3em] mb-4">Our Story</p>
+            <h2 className="text-4xl md:text-5xl font-serif italic text-slate-900 mb-8">Beyond Boundaries</h2>
+            <div className="space-y-6 text-slate-600 font-light leading-relaxed">
               <p>
-                INFIWIN began as a specialized glass atelier in 1984, focused on artisanal restorations and bespoke residential partitions. We weren't looking to revolutionize the industry; we were looking to perfect it.
+                Infiwin System is a pioneer in developing India's Frameless Slide and Fold System Industry. We have introduced our Smart And Slim Glass System that transformed architectural designing worldwide one breathtaking view at a time.
               </p>
               <p>
-                Three decades later, that commitment to microscopic precision has propelled us to the forefront of architectural glazing. Today, we handle complex commercial facades and high-performance structural systems across three continents.
+                INFIWIN is a premium Frameless Glass Doors and Windows System for Exterior and Interior applications. Our innovative window, door and motorized glass wall systems are designed to maximize the efficiency of your existing space seamlessly and silently, carefully maintaining the traditional premium aesthetic without distracting without your outdoor view.
+              </p>
+              <p>
+                Infiwin's glass enclosures blend with your internal dimensions, to open the space to bring the outside indoors without losing connection to nature while providing protection from the elements. Whether you need a warm retreat, a stylish entertainment area, or a barrier without a physical barrier, Infiwin gives house its true, timeless expression of luxury and functionality for outdoor living.
               </p>
             </div>
           </motion.div>
-          
-          <div className="relative">
-             <div className="aspect-[4/5] rounded-sm overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1518005020251-58296d195a62?auto=format&fit=crop&q=80&w=800" 
-                  alt="Craftsmanship" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-             </div>
-             <div className="absolute -top-10 -right-10 w-40 h-40 bg-luxury-gold/10 rounded-full blur-3xl"></div>
-          </div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="relative rounded-3xl overflow-hidden shadow-2xl aspect-square lg:aspect-auto lg:h-[600px]"
+          >
+            <img 
+              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80" 
+              alt="Balcony View" 
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+          </motion.div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="px-6 py-24 bg-slate-900 text-white">
+      {/* A Decade of Excellence Section */}
+      <section className="py-32 px-6 bg-slate-50 text-slate-900 overflow-hidden">
         <div className="max-w-7xl mx-auto">
-          <div className="mb-20 text-center">
-            <h3 className="text-sm font-medium text-white/40 uppercase tracking-[0.3em] mb-4">Milestones</h3>
-            <h4 className="text-5xl font-serif italic">Our Evolution</h4>
+          <div className="text-center mb-32 relative z-10">
+            <p className="text-[10px] text-luxury-gold uppercase tracking-[0.3em] mb-4">Our Journey</p>
+            <h2 className="text-4xl md:text-6xl font-serif italic text-slate-900">A Decade of Excellence</h2>
           </div>
-
-          <div className="relative">
-            {/* Horizontal Line (Desktop) / Vertical Line (Mobile) */}
-            <div className="hidden lg:block absolute top-[2.1rem] left-0 w-full h-[1px] bg-white/10"></div>
+          
+          <div ref={timelineRef} className="max-w-5xl mx-auto relative">
+            {/* Vertical Line Inactive */}
+            <div className="absolute left-[2rem] md:left-1/2 top-0 bottom-0 w-[1px] bg-luxury-gold/20 md:-translate-x-1/2"></div>
+            {/* Vertical Line Active */}
+            <motion.div 
+              className="absolute left-[2rem] md:left-1/2 top-0 bottom-0 w-[2px] bg-luxury-gold md:-translate-x-1/2 origin-top shadow-[0_0_15px_rgba(212,175,55,0.8)] z-10"
+              style={{ scaleY: scrollYProgress }}
+            ></motion.div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-               {milestones.map((m, i) => (
-                 <motion.div 
-                   key={i}
-                   initial={{ opacity: 0, y: 20 }}
-                   whileInView={{ opacity: 1, y: 0 }}
-                   viewport={{ once: true }}
-                   transition={{ delay: i * 0.1 }}
-                   className="relative"
-                 >
-                   <div className="w-4 h-4 bg-luxury-gold rounded-full mb-8 relative z-10 mx-auto lg:mx-0"></div>
-                   <p className="text-luxury-gold font-bold text-sm mb-2">{m.year}</p>
-                   <h5 className="text-lg font-serif italic mb-4">{m.title}</h5>
-                   <p className="text-white/40 text-sm font-light leading-relaxed">{m.desc}</p>
-                 </motion.div>
-               ))}
+            <div className="space-y-32 md:space-y-0">
+              {milestones.map((m, i) => {
+                const isEven = i % 2 === 0;
+                return (
+                  <motion.div 
+                    key={i}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, margin: "-40% 0px -40% 0px" }}
+                    className={`relative flex items-center ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} flex-row md:h-[400px]`}
+                  >
+                    {/* Timeline Dot */}
+                    <motion.div 
+                      variants={{
+                        hidden: { backgroundColor: "#e2e8f0", boxShadow: "0px 0px 0px rgba(212,175,55,0)" },
+                        visible: { backgroundColor: "#d4af37", boxShadow: "0px 0px 20px rgba(212,175,55,0.6)", transition: { duration: 0.4 } }
+                      }}
+                      className="absolute left-[2rem] md:left-1/2 w-4 h-4 rounded-full -translate-x-1/2 z-20 outline outline-4 outline-slate-50"
+                    >
+                    </motion.div>
+
+                    {/* Content Half */}
+                    <div className={`w-full md:w-1/2 flex flex-col justify-center pl-16 md:pl-0 ${isEven ? 'md:pr-24 md:items-end md:text-right' : 'md:pl-24 md:items-start md:text-left'} relative`}>
+
+                      
+                      <motion.div 
+                        variants={{
+                          hidden: { opacity: 0, y: 30 },
+                          visible: { opacity: 1, y: 0, transition: { duration: 0.7, delay: 0.2 } }
+                        }}
+                        className="relative z-10"
+                      >
+                        <div className={`flex items-center gap-4 mb-4 ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
+                          <span className="text-luxury-gold text-lg font-bold tracking-widest">{m.year}</span>
+                          <span className="hidden md:block w-12 h-[1px] bg-luxury-gold/50"></span>
+                        </div>
+                        <h3 className="text-3xl md:text-4xl font-serif italic text-slate-900 mb-6">{m.title}</h3>
+                        <p className="text-slate-500 font-light leading-relaxed text-sm md:text-base max-w-md">{m.desc}</p>
+                      </motion.div>
+                    </div>
+                    
+                    {/* Empty Half */}
+                    <div className="hidden md:block w-1/2"></div>
+                  </motion.div>
+                )
+              })}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="px-6 py-24 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-20">
-             <h3 className="text-sm font-medium text-slate-400 uppercase tracking-[0.3em] mb-4">Our Method</h3>
-             <h4 className="text-4xl font-serif italic text-slate-900">Surgical Precision</h4>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {process.map((step, i) => (
-              <motion.div 
-                key={i}
-                whileHover={{ y: -10 }}
-                className="p-12 border border-slate-100 rounded-sm hover:border-luxury-gold/30 hover:shadow-2xl transition-all h-full flex flex-col"
-              >
-                <div className="text-luxury-gold mb-8">{step.icon}</div>
-                <h5 className="text-2xl font-serif italic mb-6">{step.title}</h5>
-                <p className="text-slate-500 font-light leading-relaxed">{step.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Philosophy */}
-      <section className="px-6 py-24 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              <div className="lg:col-span-1">
-                 <h3 className="text-sm font-medium text-slate-400 uppercase tracking-[0.3em] mb-4">Philosophy</h3>
-                 <h4 className="text-5xl font-serif text-slate-900 leading-tight">Architecture as a <br /> <span className="italic">Silent Partner</span></h4>
-              </div>
-              
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                  { icon: <Lightbulb size={24} />, title: "Architectural Transparency", desc: "Maximizing visual flow while maintaining thermal and acoustic isolation. We strive for the invisible wall." },
-                  { icon: <ShieldCheck size={24} />, title: "Material Purity", desc: "Sourcing only low-iron glass and premium alloys to prevent color distortion and ensure longevity." },
-                  { icon: <Leaf size={24} />, title: "Sustainable Design", desc: "Engineering solutions that reduce energy reliance through passive solar management." }
-                ].map((item, i) => (
-                  <div key={i} className="flex flex-col gap-4">
-                     <div className="text-luxury-gold">{item.icon}</div>
-                     <h5 className="text-lg font-medium">{item.title}</h5>
-                     <p className="text-slate-500 text-sm font-light leading-relaxed">{item.desc}</p>
-                  </div>
-                ))}
-              </div>
-           </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="px-6 py-24">
-        <div className="max-w-7xl mx-auto">
+      {/* The Infiwin Difference Section */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
           <div className="text-center mb-20">
-            <h3 className="text-sm font-medium text-slate-400 uppercase tracking-[0.3em] mb-4">Leadership</h3>
-            <h4 className="text-5xl font-serif text-slate-900">Led by Visionaries</h4>
+            <p className="text-[10px] text-luxury-gold uppercase tracking-[0.3em] mb-4">Innovation & Design</p>
+            <h2 className="text-4xl md:text-5xl font-serif italic text-slate-900">The Infiwin Difference</h2>
           </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-center flex flex-col items-center"
+            >
+              <div className="w-16 h-16 text-luxury-gold border border-luxury-gold/20 rounded-full flex items-center justify-center mb-6">
+                <ShieldCheck size={32} />
+              </div>
+              <h3 className="text-2xl font-serif italic text-slate-900 mb-4">Easy Maintenance & Zero<br/>Cleaning Cost</h3>
+              <p className="text-slate-500 font-light leading-relaxed max-w-sm">
+                Designed by experts to minimize industry downtime and maximize efficiency. Smartly engineered for zero maintenance and cost-effective operations.
+              </p>
+            </motion.div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
-            {team.map((member, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group"
-              >
-                <div className="aspect-square rounded-sm overflow-hidden mb-6 relative">
-                  <img src={member.img} alt={member.name} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" referrerPolicy="no-referrer" />
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
-                     <a href="#" className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-luxury-gold hover:text-white transition-colors">
-                        <Linkedin size={18} />
-                     </a>
-                     <a href="#" className="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center hover:bg-luxury-gold hover:text-white transition-colors">
-                        <Twitter size={18} />
-                     </a>
-                  </div>
-                </div>
-                <h5 className="text-xl font-medium mb-1">{member.name}</h5>
-                <p className="text-slate-400 text-xs uppercase tracking-widest font-bold">{member.role}</p>
-              </motion.div>
-            ))}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-center flex flex-col items-center"
+            >
+              <div className="w-16 h-16 text-luxury-gold border border-luxury-gold/20 rounded-full flex items-center justify-center mb-6">
+                <CheckCircle2 size={32} />
+              </div>
+              <h3 className="text-2xl font-serif italic text-slate-900 mb-4">Simple Operation</h3>
+              <p className="text-slate-500 font-light leading-relaxed max-w-sm">
+                Engineered with smooth sliding mechanics requiring no physical force to operate. Enjoy a breezy, hands-free sliding experience with just a gentle push.
+              </p>
+            </motion.div>
+
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="text-center flex flex-col items-center"
+            >
+              <div className="w-16 h-16 text-luxury-gold border border-luxury-gold/20 rounded-full flex items-center justify-center mb-6">
+                <Eye size={32} />
+              </div>
+              <h3 className="text-2xl font-serif italic text-slate-900 mb-4">Unobstructed<br/>Panoramic Views</h3>
+              <p className="text-slate-500 font-light leading-relaxed max-w-sm">
+                Our frameless glass system completely eliminates visual barriers, providing a seamless transition between your indoor and outdoor spaces.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Careers Section */}
-      <section className="px-6 py-24 bg-slate-900 text-white border-t border-white/5">
-        <div className="max-w-4xl mx-auto text-center">
-           <h3 className="text-4xl font-serif italic mb-8">Join Our Mission</h3>
-           <p className="text-white/50 font-light mb-10 leading-relaxed text-lg">
-             We are always seeking visionaries, craftsmen, and engineers who share our obsession with transparency and precision. Explore a career with INFIWIN.
-           </p>
-           <button className="bg-white text-black px-12 py-4 rounded-full font-bold uppercase tracking-widest text-xs hover:bg-luxury-gold hover:text-white transition-all flex items-center gap-2 mx-auto">
-             View Openings <ArrowRight size={16} />
-           </button>
+      {/* Engineering the Future Section */}
+      <section className="py-32 px-6 bg-slate-900 text-white relative rounded-t-[3rem] overflow-hidden">
+        {/* Background Overlay or Image */}
+        <div className="absolute inset-0 z-0 opacity-20">
+          <img 
+            src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80" 
+            alt="Office Glass" 
+            className="w-full h-full object-cover"
+            referrerPolicy="no-referrer"
+          />
+        </div>
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <p className="text-[10px] text-luxury-gold uppercase tracking-[0.3em] mb-6">Our Vision</p>
+          <h2 className="text-4xl md:text-6xl font-serif italic mb-8 leading-tight">Engineering the Future of<br/>Living Spaces</h2>
+          <p className="text-white/70 font-light text-lg md:text-xl leading-relaxed mb-12 max-w-3xl mx-auto">
+            We are on a mission to redefine the boundary between our living spaces and outdoors. An open, airy transition into the surrounding environment protected entirely by a hybrid, intelligent glass engineering.
+          </p>
+          <button className="bg-luxury-gold text-white px-10 py-4 rounded-full font-bold uppercase tracking-[0.2em] text-[10px] hover:bg-black transition-colors shadow-lg shadow-black/10">
+            Explore Products
+          </button>
         </div>
       </section>
     </div>

@@ -96,7 +96,7 @@ const Hero = () => {
   );
 };
 
-const DesignGrid = () => {
+export const DesignGrid = () => {
   const usages = [
     { title: "BALCONY", category: "RESIDENTIAL", icon: <HomeIcon size={18} className="text-white" />, img: "https://i.postimg.cc/1tm1yGXW/Chat-GPT-Image-Jun-29-2026-12-04-16-PM.png", desc: "Enjoy panoramic views and protect your balcony from dust, wind, and rain with our premium frameless glass enclosures." },
     { title: "INT. PARTITION", category: "RESIDENTIAL", icon: <Layers size={18} className="text-white" />, img: "https://i.postimg.cc/QxWwG4S3/Chat-GPT-Image-Jun-29-2026-12-06-24-PM.png", desc: "Create flexible living spaces with sleek interior glass partitions without compromising natural light." },
@@ -178,21 +178,21 @@ const Features = () => {
       title: "Unobstructed Views",
       desc: "No vertical frames between glass panels ensures completely transparent viewports and expanded natural light.",
       features: ["100% Opening Potential", "Toughened Safety Glass", "No Vertical Frames"],
-      img: "https://images.unsplash.com/photo-1518005020251-58296d195a62?auto=format&fit=crop&q=80&w=800",
+      img: "/unobstructed_views.png",
       icon: <Maximize2 className="text-luxury-gold" />
     },
     {
       title: "100% Weather Shield",
       desc: "Blocks dust, wind, debris and monsoon rains. Custom rubber profiles keep balconies pristine through extreme climates.",
       features: ["Monsoon Proof", "Dust Protection", "Wind Resistant"],
-      img: "https://images.unsplash.com/photo-1533038590840-1cde6b66b7c6?auto=format&fit=crop&q=80&w=800",
+      img: "https://images.unsplash.com/photo-1515263487990-61b07816b324?auto=format&fit=crop&q=80&w=800",
       icon: <Wind className="text-luxury-gold" />
     },
     {
       title: "Noise Dampening",
       desc: "Attenuate high-decibel street noise. Convert chaotic urban balconies into tranquil spaces for focus and relaxation.",
       features: ["Acoustic Isolation", "Tranquil Interiors", "Urban Shield"],
-      img: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&q=80&w=800",
+      img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800",
       icon: <Zap className="text-luxury-gold" />
     }
   ];
