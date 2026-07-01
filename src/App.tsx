@@ -16,6 +16,7 @@ import Concepts from "./pages/Concepts";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import ThankYou from "./pages/ThankYou";
+import GalleryDetail from "./pages/GalleryDetail";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -56,6 +57,7 @@ export default function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/thank-you" element={<ThankYou />} />
+            <Route path="/gallery/:id" element={<GalleryDetail />} />
           </Routes>
         </main>
         <Footer />

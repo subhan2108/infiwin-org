@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "motion/react";
+import { galleryData } from "../data/galleryData";
 import {
   ArrowRight,
   ChevronRight,
@@ -13,18 +15,26 @@ import {
 export default function Products() {
   const [activeFilter, setActiveFilter] = useState("All");
 
+  const getProductImg = (title: string, fallbackImg: string) => {
+    const id = title.toLowerCase().replace(/[\\s&.]+/g, '-');
+    if (galleryData[id] && galleryData[id].images.length > 0) {
+      return galleryData[id].images[0];
+    }
+    return fallbackImg;
+  };
+
   const products = [
-    { title: "Guillotine Glass System", category: "Balcony", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2002_50_39%20PM.png" },
-    { title: "Telescopic Sliders", category: "Internal Partition", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2012_15_29%20PM.png" },
-    { title: "Synchronized Systems", category: "Internal Partition", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2002_29_01%20PM.png" },
-    { title: "Top Hang Bi Fold", category: "Internal Partition", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2012_27_22%20PM.png" },
-    { title: "Sliding Windows & Doors", category: "Doors & Windows", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2003_25_52%20PM.png" },
-    { title: "Openable Windows & Doors", category: "Doors & Windows", img: "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2002_30_38%20PM.png" },
-    { title: "Foldable Doors (Bi Fold)", category: "Doors & Windows", img: "/foldable_doors.png" },
-    { title: "90 Degree Encloser", category: "Bathroom", img: "/ninety_degree.png" },
-    { title: "Sliding Enclouser", category: "Bathroom", img: "/sliding_enclosure.png" },
-    { title: "Terrace Lounge System", category: "Terrace", img: "https://images.unsplash.com/photo-1600607687931-cebf66711469?auto=format&fit=crop&q=80" },
-    { title: "Slide & Turn", category: "Balcony", img: "/slide_turn.png" }
+    { title: "Guillotine Glass System", category: "Balcony", img: getProductImg("Guillotine Glass System", "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2002_50_39%20PM.png") },
+    { title: "Telescopic Sliders", category: "Internal Partition", img: getProductImg("Telescopic Sliders", "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2012_15_29%20PM.png") },
+    { title: "Synchronized Systems", category: "Internal Partition", img: getProductImg("Synchronized Systems", "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2002_29_01%20PM.png") },
+    { title: "Top Hang Bi Fold", category: "Internal Partition", img: getProductImg("Top Hang Bi Fold", "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2012_27_22%20PM.png") },
+    { title: "Sliding Windows & Doors", category: "Doors & Windows", img: getProductImg("Sliding Windows & Doors", "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2003_25_52%20PM.png") },
+    { title: "Openable Windows & Doors", category: "Doors & Windows", img: getProductImg("Openable Windows & Doors", "https://infiwin-new.vercel.app/infiwin%20images%20new/ChatGPT%20Image%20May%2023,%202026,%2002_30_38%20PM.png") },
+    { title: "Foldable Doors (Bi Fold)", category: "Doors & Windows", img: getProductImg("Foldable Doors (Bi Fold)", "/foldable_doors.png") },
+    { title: "90 Degree Encloser", category: "Bathroom", img: getProductImg("90 Degree Encloser", "/ninety_degree.png") },
+    { title: "Sliding Enclouser", category: "Bathroom", img: getProductImg("Sliding Enclouser", "/sliding_enclosure.png") },
+    { title: "Terrace Lounge System", category: "Terrace", img: getProductImg("Terrace Lounge System", "https://images.unsplash.com/photo-1600607687931-cebf66711469?auto=format&fit=crop&q=80") },
+    { title: "Slide & Turn", category: "Balcony", img: getProductImg("Slide & Turn", "/slide_turn.png") }
   ];
 
   const categories = ["All", "Balcony", "Terrace", "Internal Partition", "Doors & Windows", "Bathroom"];
@@ -85,10 +95,10 @@ export default function Products() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ delay: idx * 0.1, duration: 0.4 }}
-                className="group cursor-pointer"
               >
-                <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6 shadow-md transition-shadow hover:shadow-xl relative">
-                  <img loading="lazy"
+                <Link to={`/gallery/${p.title.toLowerCase().replace(/[\\s&.]+/g, '-')}`} className="group cursor-pointer block">
+                  <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6 shadow-md transition-shadow hover:shadow-xl relative">
+                    <img loading="lazy"
                     src={p.img}
                     alt={p.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -98,10 +108,11 @@ export default function Products() {
                     {p.category}
                   </div>
                 </div>
-                <div className="flex justify-between items-center">
-                  <h5 className="text-2xl font-serif group-hover:text-luxury-gold transition-colors">{p.title}</h5>
-                  <ArrowRight size={20} className="text-slate-300 group-hover:text-luxury-gold transform translate-x-0 group-hover:translate-x-2 transition-all" />
-                </div>
+                  <div className="flex justify-between items-center mt-6">
+                    <h5 className="text-2xl font-serif group-hover:text-luxury-gold transition-colors">{p.title}</h5>
+                    <ArrowRight size={20} className="text-slate-300 group-hover:text-luxury-gold transform translate-x-0 group-hover:translate-x-2 transition-all" />
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>

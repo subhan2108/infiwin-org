@@ -1,5 +1,6 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+import { galleryData } from "../data/galleryData";
 import {
   ArrowRight,
   Building2,
@@ -17,15 +18,23 @@ import {
 } from "lucide-react";
 
 export default function Applications() {
+  const getAppImg = (title: string, fallbackImg: string) => {
+    const id = title.toLowerCase().replace(/[\\s&.]+/g, '-');
+    if (galleryData[id] && galleryData[id].images.length > 0) {
+      return galleryData[id].images[0];
+    }
+    return fallbackImg;
+  };
+
   const featuredApps = [
-    { title: "Balcony", description: "Unobstructed frameless premium safety glazing barriers.", icon: LayoutTemplate, img: "https://i.postimg.cc/1tm1yGXW/Chat-GPT-Image-Jun-29-2026-12-04-16-PM.png" },
-    { title: "Int. Partition", description: "Sleek separation zones for functional multi-use spaces.", icon: LayoutDashboard, img: "https://i.postimg.cc/QxWwG4S3/Chat-GPT-Image-Jun-29-2026-12-06-24-PM.png" },
-    { title: "Commercial", description: "High durability storefront facades & internal partition grids.", icon: Building2, img: "https://i.postimg.cc/YS8yfJ2Q/Chat-GPT-Image-Jun-29-2026-12-07-47-PM.png" },
-    { title: "Exterior", description: "Rigid wind resistance profile constructs for elevations.", icon: PanelTop, img: "https://i.postimg.cc/59Hbympn/Chat-GPT-Image-Jun-29-2026-12-11-13-PM.png" },
-    { title: "Terrace", description: "Convert open terraces into delightful year-round glass lounges.", icon: Box, img: "https://i.postimg.cc/DwhTC3Fn/Chat-GPT-Image-Jun-29-2026-12-12-32-PM.png" },
-    { title: "Farm House", description: "Connect beautiful country landscaping with spacious interiors.", icon: Warehouse, img: "https://i.postimg.cc/4ycD5BSR/Chat-GPT-Image-Jun-29-2026-12-17-17-PM.png" },
-    { title: "Office Space", description: "Acoustically isolated conference cubes & manager cabins.", icon: Briefcase, img: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80" },
-    { title: "Garden", description: "Sleek verandas merging beautiful greenery with indoor thermal comfort.", icon: Trees, img: "https://i.postimg.cc/g2sfNwN0/Chat-GPT-Image-Jun-29-2026-12-23-17-PM.png" }
+    { title: "Balcony", description: "Unobstructed frameless premium safety glazing barriers.", icon: LayoutTemplate, img: getAppImg("Balcony", "https://i.postimg.cc/1tm1yGXW/Chat-GPT-Image-Jun-29-2026-12-04-16-PM.png") },
+    { title: "Int. Partition", description: "Sleek separation zones for functional multi-use spaces.", icon: LayoutDashboard, img: getAppImg("Int. Partition", "https://i.postimg.cc/QxWwG4S3/Chat-GPT-Image-Jun-29-2026-12-06-24-PM.png") },
+    { title: "Commercial", description: "High durability storefront facades & internal partition grids.", icon: Building2, img: getAppImg("Commercial", "https://i.postimg.cc/YS8yfJ2Q/Chat-GPT-Image-Jun-29-2026-12-07-47-PM.png") },
+    { title: "Exterior", description: "Rigid wind resistance profile constructs for elevations.", icon: PanelTop, img: getAppImg("Exterior", "https://i.postimg.cc/59Hbympn/Chat-GPT-Image-Jun-29-2026-12-11-13-PM.png") },
+    { title: "Terrace", description: "Convert open terraces into delightful year-round glass lounges.", icon: Box, img: getAppImg("Terrace", "https://i.postimg.cc/DwhTC3Fn/Chat-GPT-Image-Jun-29-2026-12-12-32-PM.png") },
+    { title: "Farm House", description: "Connect beautiful country landscaping with spacious interiors.", icon: Warehouse, img: getAppImg("Farm House", "https://i.postimg.cc/4ycD5BSR/Chat-GPT-Image-Jun-29-2026-12-17-17-PM.png") },
+    { title: "Office Space", description: "Acoustically isolated conference cubes & manager cabins.", icon: Briefcase, img: getAppImg("Office Space", "https://images.unsplash.com/photo-1497366811353-6870744d04b2?auto=format&fit=crop&q=80") },
+    { title: "Garden", description: "Sleek verandas merging beautiful greenery with indoor thermal comfort.", icon: Trees, img: getAppImg("Garden", "https://i.postimg.cc/g2sfNwN0/Chat-GPT-Image-Jun-29-2026-12-23-17-PM.png") }
   ];
 
   const usageAreas = [
@@ -82,10 +91,10 @@ export default function Applications() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.1 }}
-                className="group cursor-pointer"
               >
-                <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6 relative shadow-md transition-shadow hover:shadow-xl">
-                  <img loading="lazy"
+                <Link to={`/gallery/${app.title.toLowerCase().replace(/[\\s&.]+/g, '-')}`} className="group cursor-pointer block">
+                  <div className="aspect-[16/10] overflow-hidden rounded-sm mb-6 relative shadow-md transition-shadow hover:shadow-xl">
+                    <img loading="lazy"
                     src={app.img}
                     alt={app.title}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -98,10 +107,11 @@ export default function Applications() {
                     <p className="text-slate-500 text-sm font-light leading-relaxed">{app.description}</p>
                   </div>
                 </div>
-                <div className="flex justify-between items-center px-1">
-                  <h5 className="text-2xl font-serif group-hover:text-luxury-gold transition-colors">{app.title}</h5>
-                  <ArrowRight size={20} className="text-slate-300 group-hover:text-luxury-gold transform translate-x-0 group-hover:translate-x-2 transition-all" />
-                </div>
+                  <div className="flex justify-between items-center px-1">
+                    <h5 className="text-2xl font-serif group-hover:text-luxury-gold transition-colors">{app.title}</h5>
+                    <ArrowRight size={20} className="text-slate-300 group-hover:text-luxury-gold transform translate-x-0 group-hover:translate-x-2 transition-all" />
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
