@@ -87,11 +87,11 @@ export const BestSellerSection = () => {
           <div className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-slate-800">
              <div 
               className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 ${activeVariant === "full" ? 'opacity-100' : 'opacity-0'}`}
-              style={{ backgroundImage: "url('https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80')" }}
+              style={{ backgroundImage: "url('https://i.postimg.cc/R05g4PxJ/IMG-20250119-WA0011.jpg')" }}
              />
              <div 
               className={`absolute inset-0 bg-cover bg-center transition-opacity duration-500 ${activeVariant === "half" ? 'opacity-100' : 'opacity-0'}`}
-              style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600607688969-a5bfcd64bd40?auto=format&fit=crop&q=80')" }}
+              style={{ backgroundImage: "url('https://i.postimg.cc/x10dhQcV/Chat-GPT-Image-Jun-4-2026-03-02-04-PM.png')" }}
              />
              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent pointer-events-none"></div>
           </div>

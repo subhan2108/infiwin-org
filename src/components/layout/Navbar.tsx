@@ -23,7 +23,7 @@ export const Navbar = () => {
     { name: "Applications", href: "/applications" },
     { name: "About", href: "/about" },
     { name: "FAQs", href: "/faq" },
-    { name: "Contact us", href: "/contact" },
+    { name: "Contact ", href: "/contact" },
   ];
 
   const mobileNavLinks = [
@@ -36,24 +36,29 @@ export const Navbar = () => {
 
   const isHome = location.pathname === "/";
   // The nav starts below the marquee. If scrolled, we might want to dock it to the top.
-  const navBackground = isScrolled ? "bg-white/90 backdrop-blur-md shadow-lg" : (!isHome ? "bg-white/90 backdrop-blur-md shadow-lg" : "bg-black/20 backdrop-blur-sm");
-  const textColor = isScrolled || !isHome ? "text-slate-700 md:hover:text-black" : "text-white/90 md:hover:text-white";
+  const navBackground = isScrolled || !isHome ? "bg-white shadow-lg" : "bg-transparent";
+  const textColor = isScrolled || !isHome ? "text-black md:hover:text-black/70 font-bold" : "text-white/90 md:hover:text-white";
   const logoColor = isScrolled || !isHome ? "text-black" : "text-white";
-  const buttonClass = isScrolled || !isHome ? "bg-black text-white md:hover:bg-slate-800" : "bg-white text-black md:hover:bg-slate-100";
+  const buttonClass = isScrolled || !isHome ? "bg-black text-white md:hover:bg-luxury-gold shadow-md" : "bg-white text-black md:hover:bg-slate-200 shadow-md";
 
   return (
-    <header className="fixed top-4 left-0 w-full z-50 px-4 md:px-6 pointer-events-none">
+    <header className="fixed top-0 left-0 w-full z-50 pointer-events-none">
       {/* Main Navigation */}
-      <nav className={`mx-auto max-w-7xl rounded-full transition-all duration-300 pointer-events-auto ${navBackground}`}>
-        <div className="px-6 py-3 md:py-4 flex justify-between items-center text-sm relative">
-          <div className="flex-1">
-            <Link to="/" className="flex items-center gap-2 inline-flex">
-              <span className={`font-display text-2xl font-bold tracking-tighter transition-colors ${logoColor}`}>INFIWIN</span>
+      <nav className={`w-full transition-all duration-300 pointer-events-auto border-b border-transparent ${isScrolled ? 'border-slate-100' : ''} ${navBackground}`}>
+        <div className="w-full max-w-7xl mx-auto px-6 flex justify-between items-center text-sm relative py-1.5 md:py-2">
+          <div>
+            <Link to="/" className="flex items-center gap-2 inline-flex group">
+              <img
+                src="https://i.postimg.cc/0Q7DD7KK/H-Logo-V-BG.png"
+                alt="INFIWIN"
+                className={`h-12 md:h-16 w-auto object-contain transition-all duration-300 origin-left scale-100 group-hover:opacity-80 ${(!isScrolled && isHome) ? 'brightness-0 invert' : ''}`}
+                referrerPolicy="no-referrer"
+              />
             </Link>
           </div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 font-medium">
+          <div className="hidden lg:flex justify-center items-center gap-8 font-medium">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
@@ -65,11 +70,11 @@ export const Navbar = () => {
             ))}
           </div>
 
-          <div className="flex-1 flex justify-end items-center gap-4">
-            <button className={`hidden md:block px-8 py-3 rounded-sm uppercase tracking-[0.2em] text-[10px] transition-all ${buttonClass}`}>
-              Get Free Quote
+          <div className="flex justify-end items-center gap-8">
+            <button className={`hidden md:flex items-center justify-center px-8 py-3.5 rounded-none uppercase tracking-[0.2em] text-[10px] font-bold transition-all duration-300 ${buttonClass}`}>
+              REQUEST QUOTE
             </button>
-            
+
             {/* Mobile Toggle */}
             <button
               className={`md:hidden ${logoColor}`}
@@ -103,7 +108,7 @@ export const Navbar = () => {
                     </Link>
                   ))}
                 </div>
-                
+
                 <div className="flex flex-col gap-3 mt-2 pt-4 border-t border-slate-100">
                   <button className="bg-black text-white px-5 h-12 rounded-sm uppercase tracking-widest text-xs font-bold w-full">
                     Request Design Quote
@@ -120,22 +125,22 @@ export const Navbar = () => {
 
       {/* Sticky Bottom Mobile CTA Bar (High-Visibility Viewport Lock) */}
       <div className="md:hidden fixed bottom-4 left-4 right-4 z-50 bg-white rounded-full overflow-hidden flex shadow-2xl pointer-events-auto border border-slate-100">
-        <a 
-          href="tel:+917337074370" 
+        <a
+          href="tel:+917337074370"
           className="flex-[0.8] flex justify-center items-center gap-2 h-14 text-xs font-semibold text-slate-700 border-r border-slate-100 active:bg-slate-50"
         >
-          <Phone size={16} /> 
+          <Phone size={16} />
         </a>
-        <a 
-          href="https://wa.me/917337074370" 
+        <a
+          href="https://wa.me/917337074370"
           target="_blank"
           rel="noreferrer"
           className="flex-[0.8] flex justify-center items-center gap-2 h-14 text-xs font-semibold text-green-600 active:bg-slate-50"
         >
-          <MessageCircle size={16} /> 
+          <MessageCircle size={16} />
         </a>
-        <a 
-          href="#quote" 
+        <a
+          href="#quote"
           className="flex-[1.5] flex justify-center items-center gap-2 h-14 text-[10px] font-bold bg-black text-white uppercase tracking-widest"
         >
           Get Quote <ArrowRight size={14} />
